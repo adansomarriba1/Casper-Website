@@ -1,14 +1,36 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, CheckCircle, Play, Sparkles, TrendingUp, Video } from "lucide-react"
+import {
+  ArrowRight,
+  CheckCircle,
+  Play,
+  Sparkles,
+  TrendingUp,
+  Video,
+  Calendar,
+  Facebook,
+  Linkedin,
+  Instagram,
+  Youtube,
+} from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 
 export default function Home() {
+  // Replace these placeholder URLs with your actual social media and Calendly links
+  const socialLinks = {
+    facebook: "https://www.facebook.com/profile.php?id=100089314351644",
+    linkedin: "https://www.linkedin.com/in/casper-opala-96b80324b",
+    instagram: "https://www.instagram.com/casper.capital/",
+    youtube: "https://www.youtube.com/channel/UC2zVhoKml5z9cGsiptWxCgA",
+    tiktok: "https://www.tiktok.com/@casper.capital?lang=en",
+    calendly: "https://calendly.com/yourname/30min",
+  }
+
   return (
     <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
       <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container px-4 md:px-6 max-w-screen-xl mx-auto flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
+        <div className="container px-4 md:px-6 max-w-screen-xl mx-auto flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
           <div className="flex gap-6 md:gap-10">
             <Link href="/" className="flex items-center space-x-2">
               <Sparkles className="h-6 w-6 text-primary" />
@@ -52,9 +74,11 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button size="lg" className="gap-1">
-                    Start Scaling Your Views
-                    <ArrowRight className="h-4 w-4" />
+                  <Button size="lg" className="gap-1" asChild>
+                    <Link href={socialLinks.calendly}>
+                      Start Scaling Your Views
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
                   </Button>
                   <Button size="lg" variant="outline" className="gap-1">
                     Watch How It Works
@@ -469,7 +493,9 @@ export default function Home() {
                     <span>Publishing assistance</span>
                   </li>
                 </ul>
-                <Button className="mt-8">Get Started</Button>
+                <Button className="mt-8" asChild>
+                  <Link href={socialLinks.calendly}>Get Started</Link>
+                </Button>
               </div>
               <div className="flex flex-col rounded-lg border bg-primary p-6 shadow-sm">
                 <div className="space-y-2">
@@ -506,7 +532,9 @@ export default function Home() {
                     <span>Monthly strategy calls</span>
                   </li>
                 </ul>
-                <Button className="mt-8 bg-background text-primary hover:bg-background/90">Get Started</Button>
+                <Button className="mt-8 bg-background text-primary hover:bg-background/90" asChild>
+                  <Link href={socialLinks.calendly}>Get Started</Link>
+                </Button>
               </div>
               <div className="flex flex-col rounded-lg border bg-background p-6 shadow-sm">
                 <div className="space-y-2">
@@ -547,7 +575,9 @@ export default function Home() {
                     <span>Dedicated content manager</span>
                   </li>
                 </ul>
-                <Button className="mt-8">Get Started</Button>
+                <Button className="mt-8" asChild>
+                  <Link href={socialLinks.calendly}>Get Started</Link>
+                </Button>
               </div>
             </div>
           </div>
@@ -564,9 +594,11 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <Button size="lg" className="gap-1">
-                  Book Your Free Strategy Call
-                  <ArrowRight className="h-4 w-4" />
+                <Button size="lg" className="gap-1" asChild>
+                  <Link href={socialLinks.calendly}>
+                    Book Your Free Strategy Call
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -574,52 +606,75 @@ export default function Home() {
         </section>
       </main>
       <footer className="border-t bg-background text-sm text-muted-foreground">
-  <div className="container px-4 md:px-6 max-w-screen-xl mx-auto py-12 grid grid-cols-1 gap-8 md:grid-cols-3 md:text-left text-center">
-    {/* Left: Logo + tagline */}
-    <div className="flex flex-col items-center md:items-start gap-2">
-      <Link href="/" className="flex items-center space-x-2">
-        <Sparkles className="h-6 w-6 text-primary" />
-        <span className="font-bold text-foreground">ContentScale</span>
-      </Link>
-      <p>Helping creators scale their content and grow their audience.</p>
-    </div>
+        <div className="container px-4 md:px-6 max-w-screen-xl mx-auto py-12 grid grid-cols-1 gap-8 md:grid-cols-3 md:text-left text-center">
+          {/* Left: Logo + tagline */}
+          <div className="flex flex-col items-center md:items-start gap-2">
+            <Link href="/" className="flex items-center space-x-2">
+              <Sparkles className="h-6 w-6 text-primary" />
+              <span className="font-bold text-foreground">ContentScale</span>
+            </Link>
+            <p>Helping creators scale their content and grow their audience.</p>
+            <div className="flex items-center gap-2 mt-4">
+              <Calendar className="h-4 w-4" />
+              <Link href={socialLinks.calendly} className="hover:text-primary transition-colors">
+                Schedule a Call
+              </Link>
+            </div>
+          </div>
 
-    {/* Middle: Navigation links */}
-    <div className="flex flex-col items-center gap-2 md:items-center">
-      <Link href="#" className="hover:underline">Terms of Service</Link>
-      <Link href="#" className="hover:underline">Privacy Policy</Link>
-      <Link href="#" className="hover:underline">Contact Us</Link>
-    </div>
+          {/* Middle: Navigation links */}
+          <div className="flex flex-col items-center gap-2 md:items-center">
+            <h3 className="font-semibold text-foreground mb-2">Quick Links</h3>
+            <Link href="#" className="hover:underline">
+              Terms of Service
+            </Link>
+            <Link href="#" className="hover:underline">
+              Privacy Policy
+            </Link>
+            <Link href="#" className="hover:underline">
+              Contact Us
+            </Link>
+          </div>
 
-    {/* Right: Social icons */}
-    <div className="flex justify-center md:justify-end items-center gap-4">
-      <Link href="#" className="hover:text-foreground">
-        {/* Facebook */}
-        <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-        </svg>
-      </Link>
-      <Link href="#" className="hover:text-foreground">
-        {/* Instagram */}
-        <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <rect width="20" height="20" x="2" y="2" rx="5" />
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-        </svg>
-      </Link>
-      <Link href="#" className="hover:text-foreground">
-        {/* Twitter */}
-        <svg className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-          <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-        </svg>
-      </Link>
-    </div>
-  </div>
-  <div className="border-t py-6 text-center">
-    <p>© 2025 ContentScale. All rights reserved.</p>
-  </div>
-</footer>
-
+          {/* Right: Social icons */}
+          <div className="flex flex-col items-center md:items-end gap-4">
+            <h3 className="font-semibold text-foreground mb-2">Connect With Us</h3>
+            <div className="flex justify-center gap-4">
+              <Link href={socialLinks.facebook} className="hover:text-primary transition-colors" aria-label="Facebook">
+                <Facebook className="h-5 w-5" />
+              </Link>
+              <Link
+                href={socialLinks.instagram}
+                className="hover:text-primary transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5" />
+              </Link>
+              <Link href={socialLinks.linkedin} className="hover:text-primary transition-colors" aria-label="LinkedIn">
+                <Linkedin className="h-5 w-5" />
+              </Link>
+              <Link href={socialLinks.youtube} className="hover:text-primary transition-colors" aria-label="YouTube">
+                <Youtube className="h-5 w-5" />
+              </Link>
+              <Link href={socialLinks.tiktok} className="hover:text-primary transition-colors" aria-label="TikTok">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  viewBox="0 0 16 16"
+                  className="h-5 w-5"
+                >
+                  <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="border-t py-6 text-center">
+          <p>© 2025 ContentScale. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   )
 }
