@@ -574,7 +574,7 @@ export default function Home() {
         </section>
       </main>
       <footer className="border-t bg-background">
-        <div className="container flex flex-col gap-6 py-8 md:flex-row md:items-center md:justify-between md:py-12">
+        <div className="container px-4 md:px-6 max-w-screen-xl mx-auto flex flex-col items-center justify-between gap-6 md:flex-row md:items-start md:gap-8">
           <div className="flex flex-col gap-2">
             <Link href="/" className="flex items-center space-x-2">
               <Sparkles className="h-6 w-6 text-primary" />
